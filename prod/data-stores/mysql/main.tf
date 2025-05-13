@@ -1,18 +1,25 @@
 provider "aws" {
   region = "us-west-1"
+
+  default_tags {
+    tags = {
+      Owner = "team-foo"
+      ManagedBy = "terraform"
+    }
+  }
 }
 
 module "mysql" {
-  source = "../../../modules/data-stores/mysql"
+  source = "git::https://github.com/jakefurlong/modules.git//data-stores/mysql?ref=v0.0.1"
 
   db_username            = "admin"
   db_password            = "password"
-  db_identifier_prefix   = "terraform-stage"
+  db_identifier_prefix   = "terraform-prod"
   db_engine              = "mysql"
   db_allocated_storage   = 10
   db_instance_class      = "db.t3.micro"
   db_skip_final_snapshot = true
-  database_name          = "mysqlstage"
+  database_name          = "mysqlprod"
 }
 
 output "database_address" {
