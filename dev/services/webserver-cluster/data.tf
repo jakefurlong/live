@@ -3,7 +3,7 @@ data "terraform_remote_state" "db" {
 
   config = {
     bucket = "nimbusdevops"
-    key = "terraform-state/dev/data-stores/mysql/terraform.tfstate"
+    key    = "terraform-state/dev/data-stores/mysql/terraform.tfstate"
     region = "us-west-1"
   }
 }
