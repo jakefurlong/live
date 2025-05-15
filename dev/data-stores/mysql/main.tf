@@ -20,7 +20,7 @@ module "mysql" {
   db_allocated_storage   = 10
   db_instance_class      = "db.t3.micro"
   db_skip_final_snapshot = true
-  database_name          = "mysqldevelopment"
+  database_name          = "mysqldev"
 }
 
 output "database_address" {
